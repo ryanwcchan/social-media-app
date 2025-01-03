@@ -43,7 +43,6 @@ model User {
 model Post {
   id        String   @id @default(cuid())
   authorId  String
-  title     String
   image     String?
   content   String?
   createdAt DateTime @default(now())

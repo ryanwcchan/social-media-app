@@ -1,11 +1,15 @@
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
-import { Button } from "@/components/ui/button";
-import ModeToggle from "@/components/ModeToggle";
+import CreatePost from "@/components/CreatePost";
+import { currentUser } from "@clerk/nextjs/server";
 
-export default function Home() {
+export default async function Home() {
+  const user = await currentUser();
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
-      <h1>Homepage Content</h1>
+    <div className="grid grid-cols-1 lg:grid-cols-10 gap-6">
+      <div className="lg:col-span-6">{user ? <CreatePost /> : null}</div>
+
+      <div className="lg:col-span-4 hidden lg:block sticky top-20">
+        {/* <WhoToFollow /> */}
+      </div>
     </div>
   );
 }
