@@ -164,6 +164,7 @@ export default function PostCard({
                 ) : (
                   <HeartIcon className="size-5" />
                 )}
+                <span>{optimisisticLikes}</span>
               </Button>
             ) : (
               <SignInButton mode="modal">
@@ -193,74 +194,75 @@ export default function PostCard({
 
           {/* Comment section */}
           {showComments && (
-            <div className="space-y-4">
-              {/* Display comments */}
-
-              {post.comments.map((comment) => (
-                <div key={comment.id} className="flex space-x-3">
-                  <Avatar className="size-8 flex-shrink-0">
-                    <AvatarImage src={comment.author.image ?? "/avatar.png"} />
-                  </Avatar>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                      <span className="font-medium text-sm">
-                        {comment.author.name}
-                      </span>
-                      <span className="text-muted-foreground">
-                        @{comment.author.username}
-                      </span>
-                      <span className="text-sm text-muted-foreground">·</span>
-                      <span className="text-sm text-muted-foreground">
-                        {formatDistanceToNow(new Date(comment.createdAt))} ago
-                      </span>
+            <div className="space-y-4 pt-4 border-t">
+              <div className="space-y-4">
+                {/* Display comments */}
+                {post.comments.map((comment) => (
+                  <div key={comment.id} className="flex space-x-3">
+                    <Avatar className="size-8 flex-shrink-0">
+                      <AvatarImage
+                        src={comment.author.image ?? "/avatar.png"}
+                      />
+                    </Avatar>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                        <span className="font-medium text-sm">
+                          {comment.author.name}
+                        </span>
+                        <span className="text-muted-foreground">
+                          @{comment.author.username}
+                        </span>
+                        <span className="text-sm text-muted-foreground">·</span>
+                        <span className="text-sm text-muted-foreground">
+                          {formatDistanceToNow(new Date(comment.createdAt))} ago
+                        </span>
+                      </div>
+                      <p className="text-sm break-words">{comment.content}</p>
                     </div>
-                    <p className="text-sm break-words">{comment.content}</p>
                   </div>
-                </div>
-              ))}
-
-              {user ? (
-                <div className="flex space-x-3">
-                  <Avatar className="size-8 flex-shrink-0">
-                    <AvatarImage src={user.imageUrl || "/avatar.png"} />
-                  </Avatar>
-                  <div className="flex-1">
-                    <Textarea
-                      placeholder="Write a comment..."
-                      value={newComment}
-                      onChange={(e) => setNewComment(e.target.value)}
-                      className="resize-none min-h-[80px]"
-                    />
-
-                    <div className="flex justify-end mt-2">
-                      <Button
-                        size="sm"
-                        onClick={handleAddComment}
-                        className="flex items-center gap-2"
-                        disabled={!newComment.trim() || isCommenting}
-                      >
-                        {isCommenting ? (
-                          "Posting..."
-                        ) : (
-                          <>
-                            <SendIcon className="size-4" />
-                            Comment
-                          </>
-                        )}
+                ))}
+                {user ? (
+                  <div className="flex space-x-3">
+                    <Avatar className="size-8 flex-shrink-0">
+                      <AvatarImage src={user.imageUrl || "/avatar.png"} />
+                    </Avatar>
+                    <div className="flex-1">
+                      <Textarea
+                        placeholder="Write a comment..."
+                        value={newComment}
+                        onChange={(e) => setNewComment(e.target.value)}
+                        className="resize-none min-h-[80px]"
+                      />
+                      <div className="flex justify-end mt-2">
+                        <Button
+                          size="sm"
+                          onClick={handleAddComment}
+                          className="flex items-center gap-2"
+                          disabled={!newComment.trim() || isCommenting}
+                        >
+                          {isCommenting ? (
+                            "Posting..."
+                          ) : (
+                            <>
+                              <SendIcon className="size-4" />
+                              Comment
+                            </>
+                          )}
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex justify-center p-4 border rounded-lg bg-muted/50">
+                    <SignInButton mode="modal">
+                      <Button variant="outline" className="gap-2">
+                        <LogInIcon className="size-4" />
+                        Sign in to comment
                       </Button>
-                    </div>
+                    </SignInButton>
                   </div>
-                </div>
-              ) : (
-                <div className="flex justify-center p-4 border rounded-lg bg-muted/50">
-                  <SignInButton mode="modal">
-                    <Button variant="outline" className="gap-2">
-                      <LogInIcon className="size-4" />
-                      Sign in to comment
-                    </Button>
-                  </SignInButton>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           )}
         </div>
