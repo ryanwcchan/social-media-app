@@ -5,7 +5,6 @@ import {
   isFollowing,
 } from "@/actions/profile.action";
 import { notFound } from "next/navigation";
-import React from "react";
 import ProfilePageClient from "./ProfilePageClient";
 
 export async function generateMetadata({
@@ -44,7 +43,7 @@ export default async function ProfilePageServer({
       user={user}
       posts={posts}
       likedPosts={likedPosts}
-      followingUser={followingUser}
+      isFollowing={followingUser}
     />
   );
 }

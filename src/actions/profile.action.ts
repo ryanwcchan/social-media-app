@@ -165,6 +165,8 @@ export async function updateProfile(formData: FormData) {
       },
     });
 
+    console.log(user);
+
     revalidatePath("/profile");
     return { success: true, user };
   } catch (error) {
