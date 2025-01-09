@@ -1,9 +1,8 @@
 "use client";
 
-import {
+import updateProfile, {
   getProfileByUsername,
   getUserPosts,
-  updateProfile,
 } from "@/actions/profile.action";
 import { toggleFollowUser } from "@/actions/user.actions";
 import PostCard from "@/components/PostCard";
@@ -37,6 +36,7 @@ import toast from "react-hot-toast";
 
 type User = Awaited<ReturnType<typeof getProfileByUsername>>;
 type Posts = Awaited<ReturnType<typeof getUserPosts>>;
+type Post = Posts[number];
 
 interface ProfilePageClientProps {
   user: NonNullable<User>;
@@ -68,6 +68,8 @@ export default function ProfilePageClient({
     Object.entries(editForm).forEach(([key, value]) => {
       formData.append(key, value);
     });
+
+    alert(formData.get("bio"));
 
     const result = await updateProfile(formData);
 

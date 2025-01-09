@@ -1,3 +1,5 @@
+"use server";
+
 import prisma from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
@@ -145,7 +147,7 @@ export async function getUserLikedPosts(userId: string) {
   }
 }
 
-export async function updateProfile(formData: FormData) {
+export default async function updateProfile(formData: FormData) {
   try {
     const { userId: clerkId } = await auth();
     if (!clerkId) throw new Error("Unauthorized");
@@ -164,8 +166,6 @@ export async function updateProfile(formData: FormData) {
         website,
       },
     });
-
-    console.log(user);
 
     revalidatePath("/profile");
     return { success: true, user };
