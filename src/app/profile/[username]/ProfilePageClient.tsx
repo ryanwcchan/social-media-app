@@ -69,8 +69,6 @@ export default function ProfilePageClient({
       formData.append(key, value);
     });
 
-    alert(formData.get("bio"));
-
     const result = await updateProfile(formData);
 
     if (result.success) {
