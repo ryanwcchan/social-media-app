@@ -1,4 +1,4 @@
-# Social Media App - NEXT.js
+# Social Media App
 ### Live Preview
 **Deployed on Vercel**: [Social Hub](https://social-hub-ashen.vercel.app/)
 
