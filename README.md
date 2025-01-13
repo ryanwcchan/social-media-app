@@ -1,36 +1,21 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Social Media App - NEXT.js
+### Live Preview
+**Deployed on Vercel**: [Social Hub](https://social-hub-ashen.vercel.app/)
 
-## Getting Started
+## Description
+Social media app with user authenication where users can add posts, likes, and comments.
 
-First, run the development server:
+### Purpose
+The purpose of this project was deepen my understanding of NEXT.js and full-stack development. This project was an oppourtunity to learn and practice building a social app with posts, comments, and likes. 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
+- **Text and Image Posts**: Users can create posts with text and/or images. Used [uploadthing](https://uploadthing.com/) to store image uploads. 
+- **User Authenication**: Users can login/sign up using their Google accounts. For this project I used [Clerk](https://clerk.com/) to simplify user authenication.
+- **Database**: User information such as posts, likes, and comments stored on PostgreSQL database.  PostgreSQL database hosted on [Neon](https://neon.tech/).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Technology Stack
+- **NEXT.js**
+- **React**
+- **TypeScript**
+- **Tailwind CSS** and **shadcn/ui**
+- **Prisma** ORM
