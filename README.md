@@ -1,5 +1,5 @@
 # Social Media App
-### Live Preview
+## Live Preview
 **Deployed on Vercel**: [Social Hub](https://social-hub-ashen.vercel.app/)
 
 ## Description
